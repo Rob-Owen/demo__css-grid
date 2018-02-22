@@ -1,0 +1,70 @@
+$area-background-colour: rgb(192, 192, 192);
+$image-shadow-color: rgba(0, 0, 0, .5);
+$box-shadow-color: rgba(69, 69, 69, 0.5);
+
+body {
+    text-align: center;
+}
+
+// default layout (large screens)
+.container {
+    display: grid;
+    margin: auto;
+    width: 70%;
+    height: 100%;
+    grid-template:
+        "   a   b   b"  auto
+        "   c   d   e"  auto
+        /   1fr 1fr 1fr;
+    grid-gap: 2vh;
+}
+
+// small screens
+@media(max-width: 512px) {
+    .container {
+        width: 90%;
+        grid-template:
+            "   a"  30vh
+            "   b"  auto
+            "   c"  auto
+            "   d"  auto
+            "   e"  auto
+            /   100%;
+    }
+    grid-gap: 5vh;
+}
+
+.img-wrapper {
+    grid-area: a;
+}
+.header-box {
+    grid-area: b;
+}
+.text-box :nth-of-type(1) {
+    grid-area: c;
+}
+.text-box :nth-of-type(2) {
+    grid-area: d;
+}
+.text-box :nth-of-type(3) {
+    grid-area: e;
+}
+
+.container > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container > :not(:first-child) {
+    background-color: $area-background-colour;
+    border-radius: 2vh;
+    box-shadow: 0px 0px 20px $box-shadow-color;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px $image-shadow-color;
+}
